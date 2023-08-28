@@ -1,5 +1,9 @@
 function! interdental#changeListener(bufnr, start, end, added, changes)
-  call interdental#setIndentGuides(a:start, a:end)
+  let last = a:end - 1
+  if last > line('$')
+    let last = line('$')
+  endif
+  call interdental#setIndentGuides(a:start, last)
 endfunction
 
 
