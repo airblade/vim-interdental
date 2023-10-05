@@ -1,9 +1,5 @@
 function! interdental#changeListener(bufnr, start, end, added, changes)
-  let last = a:end - 1
-  if last > line('$')
-    let last = line('$')
-  endif
-  call interdental#setIndentGuides(a:start, last)
+  call interdental#setIndentGuides(a:start, a:end - 1)
 endfunction
 
 
@@ -23,6 +19,15 @@ function! interdental#setIndentGuides(...)
 
   if a:0
     let [start, end] = [a:1, a:2]
+    if start > line('$')
+      let start = line('$')
+    endif
+    if end > line('$')
+      let end = line('$')
+    endif
+    if start > end
+      let [start, end] = [end, start]
+    endif
   else
     let [start, end] = [1, line('$')]
   endif
