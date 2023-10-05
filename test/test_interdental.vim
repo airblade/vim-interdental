@@ -1,5 +1,6 @@
 function SetUp()
-  set listchars+=leadmultispace:1234567890
+  let g:leadmultispace = '1234567890'
+  autocmd FileType ruby call interdental#toggle(1)
   edit fixture.rb
 endfunction
 
@@ -13,13 +14,13 @@ function Test_bufenter()
   call assert_equal(7, len(actual))
 
   let expected = [
-        \ {'lnum':  3, 'length': 3, text: '123'},
-        \ {'lnum':  5, 'length': 3, text: '123'},
-        \ {'lnum':  7, 'length': 5, text: '12345'},
-        \ {'lnum':  9, 'length': 7, text: '1234567'},
-        \ {'lnum': 13, 'length': 7, text: '1234567'},
-        \ {'lnum': 15, 'length': 5, text: '12345'},
-        \ {'lnum': 17, 'length': 3, text: '123'}
+        \ {'lnum':  3, 'length': 3, 'text': '123'},
+        \ {'lnum':  5, 'length': 3, 'text': '123'},
+        \ {'lnum':  7, 'length': 5, 'text': '12345'},
+        \ {'lnum':  9, 'length': 7, 'text': '1234567'},
+        \ {'lnum': 13, 'length': 7, 'text': '1234567'},
+        \ {'lnum': 15, 'length': 5, 'text': '12345'},
+        \ {'lnum': 17, 'length': 3, 'text': '123'}
         \ ]
 
   for i in range(len(expected))

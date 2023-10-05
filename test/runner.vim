@@ -162,5 +162,5 @@ split messages.log
 call append(line('$'), s:messages)
 write
 
-qall!
+" qall!
 

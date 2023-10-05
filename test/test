@@ -19,6 +19,7 @@ VIM="/Applications/MacVim.app/Contents/MacOS/Vim -v"
 
 $VIM -u NONE -U NONE -N \
   --cmd 'set rtp+=../'  \
+  --cmd 'filetype on'   \
   --cmd 'source ../plugin/interdental.vim' \
   -S runner.vim         \
   test_*.vim            \
